@@ -9,14 +9,16 @@
 
 - store에 의존성을 두지 않는다.
 - styled-components를 사용해 컴포넌트 내에 스타일을 포함한다.
+- airbnb eslint를 따른다.
 
 ## Dependencies
 
 이 프로젝트는 아래의 모듈들에 의존성을 가집니다.
 
-- docz
-- docz-theme-default
 - styled-components
+- eslint-config-airbnb
+- docz (dev)
+- docz-theme-default (dev)
 
 ## Available Scripts
 

@@ -1,0 +1,50 @@
+---
+name: Input
+---
+
+import { Playground, PropsTable } from 'docz'
+import Input from './Input'
+
+# Input
+
+<PropsTable of={Input} />
+
+## Type
+
+### text
+
+<Playground>
+  <Input type="text" onChange={e => console.log(e)} />
+</Playground>
+
+### password
+
+<Playground>
+  <Input type="password" onChange={e => console.log(e)} />
+</Playground>
+
+## Placeholder
+
+<Playground>
+  <Input type="text" placeholder="이름을 입력하세요." onChange={e => console.log(e)} />
+</Playground>
+
+## Size
+
+### 30
+
+<Playground>
+  <Input type="text" size={30} onChange={e => console.log(e)} />
+</Playground>
+
+### 40
+
+<Playground>
+  <Input type="text" size={40} onChange={e => console.log(e)} />
+</Playground>
+
+### 50
+
+<Playground>
+  <Input type="text" size={50} onChange={e => console.log(e)} />
+</Playground>
