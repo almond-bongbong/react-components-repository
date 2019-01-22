@@ -7,18 +7,8 @@
 
 이 프로젝트는 아래의 규칙들에 의해 작성될 예정입니다.
 
-- store에 의존성을 두지 않는다.
 - styled-components를 사용해 컴포넌트 내에 스타일을 포함한다.
 - airbnb eslint를 따른다.
-
-## Dependencies
-
-이 프로젝트는 아래의 모듈들에 의존성을 가집니다.
-
-- styled-components
-- eslint-config-airbnb
-- docz (dev)
-- docz-theme-default (dev)
 
 ## Available Scripts
 
@@ -33,6 +23,16 @@
 
 컴포넌트 페이지를 정적인 페이지로 build 할 수 있습니다.
 
-### `npm run test`
+## Dependencies
 
-(TODO)
+이 프로젝트는 아래의 모듈들에 의존성을 가집니다.
+
+### production
+- styled-components
+- eslint-config-airbnb
+- nprogress
+- lodash
+
+### development
+- docz
+- docz-theme-default

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const style = {
   thick: 2,
@@ -50,16 +50,14 @@ const SimplePreloader = styled.div`
     border-radius: 50%;
     border: ${style.thick}px solid transparent;
     border-top-color: #ff5071;
-    animation: ${spin} 1.5s linear infinite;
+    animation: ${spin} 1s linear infinite;
   }
 `;
 
-const Preloader = () => {
-  return (
-    <SimplePreloader>
-      <div className="loader" />
-    </SimplePreloader>
-  );
-};
+const PreLoader = () => (
+  <SimplePreloader>
+    <div className="loader" />
+  </SimplePreloader>
+);
 
-export default Preloader;
+export default PreLoader;
