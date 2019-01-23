@@ -14,6 +14,11 @@ export default createGlobalStyle`
     padding: 0;
   }
   
+  body {
+    color: #888;
+    font-size: 13px;
+  }
+  
   #nprogress {
       pointer-events: none;
   }

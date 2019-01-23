@@ -1,0 +1,35 @@
+---
+name: FancyCheckbox
+menu: Checkbox
+---
+
+import { Playground, PropsTable } from 'docz'
+import FancyCheckbox from './FancyCheckbox'
+
+# CustomCheckbox
+
+<PropsTable of={FancyCheckbox} />
+
+## Basic usage
+
+<Playground>
+  <FancyCheckbox id="chk1" label="체크박스" onChange={e => console.log(e)} />
+</Playground>
+
+### checked
+
+<Playground>
+  <FancyCheckbox id="chk2" label="체크박스" checked={true} onChange={e => console.log(e)} />
+</Playground>
+
+## Disable
+
+<Playground>
+  <FancyCheckbox id="chk4" label="비활성화된 체크박스" disabled={true} onChange={e => console.log(e)} />
+</Playground>
+
+### checked
+
+<Playground>
+  <FancyCheckbox id="chk5" label="비활성화된 체크박스" disabled={true} checked={true} onChange={e => console.log(e)} />
+</Playground>

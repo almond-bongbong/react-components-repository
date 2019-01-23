@@ -23,12 +23,7 @@ const BasicCheckbox = styled.div`
     }
     &:disabled {
       & + span {
-        color: #999;
-        cursor: default;
-        &:before {
-          border: 1px solid #dadada;
-          background-color: #e6e6e6;
-        }
+        opacity: 0.6;
       }
     }
   }
@@ -36,7 +31,6 @@ const BasicCheckbox = styled.div`
     display: block;
     position: relative;
     height: 18px;
-    padding-left: 25px;
     font-size: 14px;
     line-height: 18px;
     cursor: pointer;
