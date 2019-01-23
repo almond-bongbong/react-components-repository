@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const BasicInput = styled.div`
+const BasicInputStyle = styled.div`
   display: block;
   border-radius: 3px;
   
@@ -21,9 +21,9 @@ const BasicInput = styled.div`
 const Input = ({
   type, placeholder, value, size, onChange,
 }) => (
-  <BasicInput size={size}>
+  <BasicInputStyle size={size}>
     <input type={type} placeholder={placeholder} value={value} onChange={onChange} />
-  </BasicInput>
+  </BasicInputStyle>
 );
 
 Input.propTypes = {

@@ -1,0 +1,90 @@
+---
+name: Select
+---
+
+import { Playground, PropsTable } from 'docz'
+import Select from './Select'
+import Option from './Option'
+
+# Select
+
+<PropsTable of={Select} />
+
+## Basic usage
+
+<Playground>
+  {() => {
+    class Test extends React.Component {
+      constructor (props) {
+        super(props)
+
+        this.state = { selectedValue: 0 }
+      }
+
+      render() {
+        return (
+          <Select value={this.state.selectedValue} onChange={e => this.setState({ selectedValue: e.target.value })}>
+            <Option title="서울" value={0} />
+            <Option title="경기도" value={1} />
+            <Option title="부산" value={2} />
+            <Option title="인천" value={3} />
+            <Option title="제주도" value={4} />
+          </Select>
+        )
+      }
+    }
+    return (
+      <Test />
+    )
+  }}
+</Playground>
+
+## Inline
+
+<Playground>
+  <Select inline={true} value={0} onChange={e => console.log(e)}>
+    <Option title="서울" value={0} />
+    <Option title="경기도" value={1} />
+    <Option title="부산" value={2} />
+    <Option title="인천" value={3} />
+    <Option title="제주도" value={4} />
+  </Select>
+</Playground>
+
+## Size
+
+### 30
+
+<Playground>
+  <Select size={30} value={0} onChange={e => console.log(e)}>
+    <Option title="서울" value={0} />
+    <Option title="경기도" value={1} />
+    <Option title="부산" value={2} />
+    <Option title="인천" value={3} />
+    <Option title="제주도" value={4} />
+  </Select>
+</Playground>
+
+### 40 (default)
+
+<Playground>
+  <Select size={40} value={0} onChange={e => console.log(e)}>
+    <Option title="서울" value={0} />
+    <Option title="경기도" value={1} />
+    <Option title="부산" value={2} />
+    <Option title="인천" value={3} />
+    <Option title="제주도" value={4} />
+  </Select>
+</Playground>
+
+### 50
+
+<Playground>
+  <Select size={50} value={0} onChange={e => console.log(e)}>
+    <Option title="서울" value={0} />
+    <Option title="경기도" value={1} />
+    <Option title="부산" value={2} />
+    <Option title="인천" value={3} />
+    <Option title="제주도" value={4} />
+  </Select>
+</Playground>

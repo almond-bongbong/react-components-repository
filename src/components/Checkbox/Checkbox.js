@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { hidden, blue, alignY } from '../Style/Mixin';
 
-const BasicCheckbox = styled.div`
+const BasicCheckboxStyle = styled.div`
   display: inline-block;
   & label {
     display: block;
@@ -69,12 +69,12 @@ const BasicCheckbox = styled.div`
 const Checkbox = ({
   id, label, checked, onChange, disabled, value,
 }) => (
-  <BasicCheckbox label={label}>
+  <BasicCheckboxStyle label={label}>
     <label htmlFor={id}>
       <input type="checkbox" id={id} checked={checked} disabled={disabled} value={value} onChange={onChange} />
       <span>{label}</span>
     </label>
-  </BasicCheckbox>
+  </BasicCheckboxStyle>
 );
 
 Checkbox.propTypes = {
@@ -92,5 +92,6 @@ Checkbox.defaultProps = {
   checked: false,
   disabled: false,
 };
+
 
 export default Checkbox;

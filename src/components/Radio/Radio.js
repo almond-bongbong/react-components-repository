@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { hidden, blue, alignY } from '../Style/Mixin';
 
-const BasicRadio = styled.div`
+const BasicRadioStyle = styled.div`
   display: inline-block;
   & label {
     display: block;
@@ -69,12 +69,12 @@ const BasicRadio = styled.div`
 const Checkbox = ({
   id, label, checked, onChange, disabled, value,
 }) => (
-  <BasicRadio label={label}>
+  <BasicRadioStyle label={label}>
     <label htmlFor={id}>
       <input type="radio" id={id} checked={checked} disabled={disabled} value={value} onChange={onChange} />
       <span>{label}</span>
     </label>
-  </BasicRadio>
+  </BasicRadioStyle>
 );
 
 Checkbox.propTypes = {
