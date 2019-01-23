@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { hidden, blue, alignY } from '../Style/Mixin';
 
-const BasicCheckbox = styled.div`
+const BasicRadio = styled.div`
   display: inline-block;
   & label {
     display: block;
@@ -14,10 +14,9 @@ const BasicCheckbox = styled.div`
       & + span {
         &:before {
           border: 1px solid ${blue};
-          background-color: ${blue};
         }
         &:after {
-          display: block;
+          transform: scale(1);
         }
       }
     }
@@ -48,20 +47,21 @@ const BasicCheckbox = styled.div`
       width: 18px;
       height: 18px;
       border: 1px solid #ddd;
-      border-radius: 1px;
+      border-radius: 50%;
       background-color: #fff;
     }
     &:after {
       content: '';
-      display: none;
+      display: block;
       position: absolute;
-      top: 3px;
-      left: 7px;
-      width: 5px;
-      height: 9px;
-      border: solid #fff;
-      border-width: 0 2px 2px 0;
-      transform: rotate(45deg);
+      top: 4px;
+      left: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: ${blue};
+      transform: scale(0);
+      transition: transform .2s cubic-bezier(0.82, 0.64, 0.54, 1.51);
     }
   }
 `;
@@ -69,18 +69,18 @@ const BasicCheckbox = styled.div`
 const Checkbox = ({
   id, label, checked, onChange, disabled, value,
 }) => (
-  <BasicCheckbox label={label}>
+  <BasicRadio label={label}>
     <label htmlFor={id}>
-      <input type="checkbox" id={id} checked={checked} disabled={disabled} value={value} onChange={onChange} />
+      <input type="radio" id={id} checked={checked} disabled={disabled} value={value} onChange={onChange} />
       <span>{label}</span>
     </label>
-  </BasicCheckbox>
+  </BasicRadio>
 );
 
 Checkbox.propTypes = {
   id: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
@@ -88,9 +88,9 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   label: '',
-  value: '',
   checked: false,
   disabled: false,
+  value: '',
 };
 
 export default Checkbox;

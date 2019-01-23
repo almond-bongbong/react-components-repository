@@ -64,15 +64,10 @@ const Button = ({
 );
 
 Button.propTypes = {
-  /** css display attribute */
   inline: PropTypes.bool,
-  /** value of button */
   children: PropTypes.string.isRequired,
-  /** theme */
   theme: PropTypes.oneOf(['red', 'white', 'blue']),
-  /** size */
   size: PropTypes.oneOf([30, 40, 50]),
-  /** click event */
   onClick: PropTypes.func,
 };
 

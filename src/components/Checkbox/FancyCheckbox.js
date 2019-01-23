@@ -60,11 +60,11 @@ const FancyCheckboxStyle = styled.div`
 `;
 
 const FancyCheckbox = ({
-  id, label, checked, onChange, disabled,
+  id, label, checked, onChange, disabled, value,
 }) => (
   <FancyCheckboxStyle label={label}>
     <label htmlFor={id}>
-      <input type="checkbox" id={id} disabled={disabled} checked={checked} onChange={onChange} />
+      <input type="checkbox" id={id} disabled={disabled} checked={checked} value={value} onChange={onChange} />
       <span><i>{label}</i></span>
     </label>
   </FancyCheckboxStyle>
@@ -72,6 +72,7 @@ const FancyCheckbox = ({
 
 FancyCheckbox.propTypes = {
   id: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string.isRequired,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -81,6 +82,7 @@ FancyCheckbox.propTypes = {
 FancyCheckbox.defaultProps = {
   checked: false,
   disabled: false,
+  value: '',
 };
 
 export default FancyCheckbox;

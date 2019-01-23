@@ -11,6 +11,9 @@ export default {
     'Getting Started',
     'Button',
     'Input',
+    'SelectGroup',
+    'Checkbox',
+    'Radio',
   ],
   wrapper: 'src/components/Wrapper',
 };

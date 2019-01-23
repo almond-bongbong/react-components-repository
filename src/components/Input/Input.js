@@ -27,15 +27,10 @@ const Input = ({
 );
 
 Input.propTypes = {
-  /** type of input */
   type: PropTypes.oneOf(['text', 'password']),
-  /** guide text */
   placeholder: PropTypes.string,
-  /** value of input */
   value: PropTypes.string,
-  /** size */
   size: PropTypes.oneOf([30, 40, 50]),
-  /** onchange event */
   onChange: PropTypes.func.isRequired,
 };
 

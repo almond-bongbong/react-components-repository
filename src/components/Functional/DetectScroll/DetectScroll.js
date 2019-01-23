@@ -55,9 +55,7 @@ class DetectScroll extends Component {
 }
 
 DetectScroll.propTypes = {
-  /** scroll end event */
   onScrollEnd: PropTypes.func,
-  /** end point, max 1.0 */
   endOffset: PropTypes.number,
 };
 

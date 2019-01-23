@@ -13,7 +13,26 @@ import FancyCheckbox from './FancyCheckbox'
 ## Basic usage
 
 <Playground>
-  <FancyCheckbox id="chk1" label="체크박스" onChange={e => console.log(e)} />
+  {() => {
+    class Test extends React.Component {
+      constructor (props) {
+        super(props)
+
+        this.state = { checked: false }
+      }
+
+      render() {
+        return (
+          <>
+            <FancyCheckbox id="chk1-1" label="체크박스" checked={this.state.checked} onChange={e => this.setState({ checked: e.target.checked })} />
+          </>
+        )
+      }
+    }
+    return (
+      <Test />
+    )
+  }}
 </Playground>
 
 ### checked

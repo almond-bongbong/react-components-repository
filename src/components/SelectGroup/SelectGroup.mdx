@@ -1,0 +1,70 @@
+---
+name: SelectGroup
+---
+
+import { Playground, PropsTable } from 'docz'
+import SelectGroup from './SelectGroup'
+import Radio from '../Radio/Radio'
+
+# SelectGroup
+
+<PropsTable of={SelectGroup} />
+
+## Type
+
+### inline (default)
+
+<Playground>
+  <SelectGroup>
+    <Radio id="radio1" label="한국" checked={true} onChange={e => console.log(e)} />
+    <Radio id="radio2" label="미국" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio3" label="아르헨티나" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio4" label="사우디 아라비아" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio5" label="말레이시아" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio6" label="싱가포르" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio7" label="프랑스" checked={false} onChange={e => console.log(e)} />
+  </SelectGroup>
+</Playground>
+
+### block
+
+<Playground>
+  <SelectGroup type="block">
+    <Radio id="radio1" label="한국" checked={true} onChange={e => console.log(e)} />
+    <Radio id="radio2" label="미국" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio3" label="아르헨티나" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio4" label="사우디 아라비아" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio5" label="말레이시아" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio6" label="싱가포르" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio7" label="프랑스" checked={false} onChange={e => console.log(e)} />
+  </SelectGroup>
+</Playground>
+
+### grid
+
+`grid` 타입의 경우 grid 속성을 통해 나눌 갯수를 지정 할 수 있습니다. (default 4)
+
+<Playground>
+  <SelectGroup type="grid">
+    <Radio id="radio1" label="한국" checked={true} onChange={e => console.log(e)} />
+    <Radio id="radio2" label="미국" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio3" label="아르헨티나" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio4" label="사우디 아라비아" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio5" label="말레이시아" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio6" label="싱가포르" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio7" label="프랑스" checked={false} onChange={e => console.log(e)} />
+  </SelectGroup>
+</Playground>
+
+<Playground>
+  <SelectGroup type="grid" grid={5}>
+    <Radio id="radio1" label="한국" checked={true} onChange={e => console.log(e)} />
+    <Radio id="radio2" label="미국" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio3" label="아르헨티나" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio4" label="사우디 아라비아" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio5" label="말레이시아" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio6" label="싱가포르" checked={false} onChange={e => console.log(e)} />
+    <Radio id="radio7" label="프랑스" checked={false} onChange={e => console.log(e)} />
+  </SelectGroup>
+</Playground>
+
