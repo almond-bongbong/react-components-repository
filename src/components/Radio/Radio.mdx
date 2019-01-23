@@ -5,6 +5,7 @@ menu: Radio
 
 import { Playground, PropsTable } from 'docz'
 import Radio from './Radio'
+import SelectGroup from '../SelectGroup/SelectGroup'
 
 # BasicRadio
 
@@ -23,10 +24,10 @@ import Radio from './Radio'
 
       render() {
         return (
-          <>
+          <SelectGroup>
             <Radio id="radio1-1" label="라디오1" checked={this.state.checkedIdx === 0} onChange={e => e.target.checked && this.setState({ checkedIdx: 0 })} />
             <Radio id="radio1-2" label="라디오2" checked={this.state.checkedIdx === 1} onChange={e => e.target.checked && this.setState({ checkedIdx: 1 })} />
-          </>
+          </SelectGroup>
         )
       }
     }

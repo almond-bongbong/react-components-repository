@@ -90,7 +90,7 @@ Checkbox.defaultProps = {
   label: '',
   checked: false,
   disabled: false,
-  value: '',
+  value: undefined,
 };
 
 export default Checkbox;

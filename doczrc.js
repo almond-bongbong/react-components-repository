@@ -12,8 +12,14 @@ export default {
     'Button',
     'Input',
     'SelectGroup',
-    'Checkbox',
-    'Radio',
+    {
+      name: 'Checkbox',
+      menu: ['BasicCheckbox', 'FancyCheckbox'],
+    },
+    {
+      name: 'Radio',
+      menu: ['BasicRadio', 'FancyRadio'],
+    },
   ],
   wrapper: 'src/components/Wrapper',
 };

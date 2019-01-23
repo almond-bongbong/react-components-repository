@@ -88,7 +88,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   label: '',
-  value: '',
+  value: undefined,
   checked: false,
   disabled: false,
 };

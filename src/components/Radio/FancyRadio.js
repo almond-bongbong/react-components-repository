@@ -46,7 +46,7 @@ const FancyCheckboxStyle = styled.div`
       width: 18px;
       height: 18px;
       border: 2px solid #ccc;
-      border-radius: 3px;
+      border-radius: 16px;
       transition: .25s all ease;
     }
     & i {
@@ -59,18 +59,18 @@ const FancyCheckboxStyle = styled.div`
   }
 `;
 
-const FancyCheckbox = ({
+const FancyRadio = ({
   id, label, checked, onChange, disabled, value,
 }) => (
   <FancyCheckboxStyle label={label}>
     <label htmlFor={id}>
-      <input type="checkbox" id={id} disabled={disabled} checked={checked} value={value} onChange={onChange} />
+      <input type="radio" id={id} disabled={disabled} checked={checked} value={value} onChange={onChange} />
       <span><i>{label}</i></span>
     </label>
   </FancyCheckboxStyle>
 );
 
-FancyCheckbox.propTypes = {
+FancyRadio.propTypes = {
   id: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label: PropTypes.string.isRequired,
@@ -79,10 +79,10 @@ FancyCheckbox.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-FancyCheckbox.defaultProps = {
+FancyRadio.defaultProps = {
   checked: false,
   disabled: false,
   value: undefined,
 };
 
-export default FancyCheckbox;
+export default FancyRadio;

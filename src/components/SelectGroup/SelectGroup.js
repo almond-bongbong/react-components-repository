@@ -12,6 +12,7 @@ const SelectGroupStyle = styled.div`
     & .sel_item {
       display: inline-block;
       padding: 5px 10px;
+      vertical-align: top;
     }
   `}
   
@@ -31,6 +32,7 @@ const SelectGroupStyle = styled.div`
       display: inline-block;
       width: ${100 / props.grid}%;
       padding: 5px 0;
+      vertical-align: top;
     }
   `}
 `;
