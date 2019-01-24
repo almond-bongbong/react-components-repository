@@ -1,0 +1,38 @@
+---
+name: Alert
+---
+
+import { Playground, PropsTable } from 'docz'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as alertActions from '../../modules/alert'
+import Button from '../Button/Button'
+
+# Alert
+
+1. 최상위 컴포넌트 내에 `<Alert />` 컴포넌트를 추가 합니다.
+
+```
+<div className="App">
+  <Alert />
+</div>
+```
+
+2. `<Alert />` 컴포넌트는 store의 `alert` reducer를 바라봅니다.
+
+<Playground>
+  {() => {
+    const TestWrap = connect(null, dispatch => ({
+      AlertActions: bindActionCreators(alertActions, dispatch),
+    }))(class Test extends React.Component {
+      render() {
+        return (
+          <>
+            <Button onClick={e => this.props.AlertActions.alertOpen('안녕하세요. \n 홍길동님 환영합니다.')}>alert!</Button>
+          </>
+        )
+      }
+    })
+    return <TestWrap />
+  }}
+</Playground>

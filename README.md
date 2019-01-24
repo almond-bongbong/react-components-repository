@@ -27,14 +27,20 @@ http://react-compo-repo.surge.sh/
 
 ## Dependencies
 
-이 프로젝트는 아래의 모듈들에 의존성을 가집니다.
+이 프로젝트는 cra_v2로 생성 되었고 아래의 모듈들에 의존성을 가집니다.
 
 ### production
+
 - styled-components
 - eslint-config-airbnb
 - nprogress
 - lodash
+- redux 
+- react-redux
+- redux-actions
+- immer
 
 ### development
+
 - docz
 - docz-theme-default
