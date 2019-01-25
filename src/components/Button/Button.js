@@ -25,6 +25,7 @@ const BasicButton = styled.div`
     text-align: center;
     text-decoration: none;
     line-height: ${props => props.size}px;
+    transition: box-shadow .2s;
   
     &:hover {
       box-shadow: 0 1px 2px rgba(0,0,0,0.1);
