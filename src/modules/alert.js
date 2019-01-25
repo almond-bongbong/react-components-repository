@@ -7,6 +7,10 @@ const ALERT_CLOSE = 'alert/ALERT_CLOSE';
 export const alertOpen = createAction(ALERT_OPEN);
 export const alertClose = createAction(ALERT_CLOSE);
 
+export const alert = message => (dispatch) => {
+  dispatch(alertOpen(message));
+};
+
 const initialState = {
   show: false,
   message: null,

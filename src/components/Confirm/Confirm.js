@@ -2,15 +2,16 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
-import * as alertActions from '../../modules/alert';
+import * as confirmActions from '../../modules/confirm';
 import Button from '../Button/Button';
+import ButtonGroup from '../ButtonGroup/ButtonGroup';
 
 const fadeIn = keyframes`
   0%   { opacity: 0; }
   100% { opacity: 1; }
 `;
 
-const AlertStyle = styled.div`
+const ConfirmStyle = styled.div`
   position: fixed;
   top: 0;
   right: 0;
@@ -47,47 +48,52 @@ const AlertStyle = styled.div`
   }
 `;
 
-const Alert = ({ alert, alertClose }) => (
+const Confirm = ({ confirm, confirmClose }) => (
   <>
-    {alert.show && (
-      <AlertStyle>
+    {confirm.show && (
+      <ConfirmStyle>
         <div
           className="mask"
           role="button"
           tabIndex="0"
-          onClick={alertClose}
+          onClick={confirmClose}
           title="닫기"
-          onKeyPress={e => e.key === 'Enter' && alertClose()}
+          onKeyPress={e => e.key === 'Enter' && confirmClose()}
         />
         <div className="content">
           <div className="message">
-            {alert.message.split('\n').map(line => (
+            {confirm.message.split('\n').map(line => (
               <Fragment key={line}>
                 {line}
                 <br />
               </Fragment>
             ))}
           </div>
-          <Button inline={false} onClick={alertClose}>확인</Button>
+
+          <ButtonGroup>
+            <Button inline={false} onClick={() => confirm.callback(false)}>취소</Button>
+            <Button inline={false} onClick={() => confirm.callback(true)} theme="red">확인</Button>
+          </ButtonGroup>
         </div>
-      </AlertStyle>)
+      </ConfirmStyle>)
     }
   </>
 );
 
-Alert.propType = {
-  AlertActions: PropTypes.shape({}).isRequired,
-  alert: PropTypes.shape({
+Confirm.propType = {
+  ConfirmActions: PropTypes.shape({}).isRequired,
+  confirm: PropTypes.shape({
     show: PropTypes.bool,
     message: PropTypes.string,
+    callback: PropTypes.func,
   }).isRequired,
 };
 
 export default connect(
   state => ({
-    alert: state.alert,
+    confirm: state.confirm,
   }),
   dispatch => ({
-    alertClose: () => dispatch(alertActions.alertClose()),
+    confirmClose: () => dispatch(confirmActions.confirmClose()),
   }),
-)(Alert);
+)(Confirm);

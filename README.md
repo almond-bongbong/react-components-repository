@@ -38,6 +38,7 @@ http://react-compo-repo.surge.sh/
 - redux 
 - react-redux
 - redux-actions
+- redux-thunk
 - immer
 
 ### development

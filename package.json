@@ -15,6 +15,7 @@
     "react-scripts": "2.1.3",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^4.1.3"
   },
   "scripts": {
@@ -24,7 +25,7 @@
     "eject": "react-scripts eject",
     "docz:start": "docz dev",
     "docz:build": "docz build",
-    "docz:deploy": "yarn docz:build && echo \"react-compo-repo.surge.sh\" > ./.docz/dist/CNAME && surge ./.docz/dist/"
+    "docz:deploy": "yarn docz:build && surge ./.docz/dist/ --domain react-compo-repo.surge.sh"
   },
   "eslintConfig": {
     "extends": "airbnb",
@@ -34,8 +35,24 @@
     },
     "rules": {
       "react/jsx-filename-extension": 0,
-      "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["draft"] }],
-      "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION__", "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }]
+      "no-param-reassign": [
+        "error",
+        {
+          "props": true,
+          "ignorePropertyModificationsFor": [
+            "draft"
+          ]
+        }
+      ],
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "__REDUX_DEVTOOLS_EXTENSION__",
+            "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"
+          ]
+        }
+      ]
     }
   },
   "browserslist": [

@@ -10,6 +10,7 @@ export default {
   menu: [
     'Getting Started',
     'Button',
+    'ButtonGroup',
     'Input',
     'SelectGroup',
     {

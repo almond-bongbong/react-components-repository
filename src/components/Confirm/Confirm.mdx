@@ -1,0 +1,45 @@
+---
+name: Confirm
+---
+
+import { Playground, PropsTable } from 'docz'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as confirmActions from '../../modules/confirm'
+import Button from '../Button/Button'
+
+# Confirm
+
+1. 최상위 컴포넌트 내에 `<Confirm />` 컴포넌트를 추가 합니다.
+
+```
+<div className="App">
+  <Confirm />
+</div>
+```
+
+2. `<Confirm />` 컴포넌트는 store의 `confirm` reducer를 바라봅니다.
+
+<Playground>
+  {() => {
+    const TestWrap = connect(null, dispatch => ({
+      ConfirmActions: bindActionCreators(confirmActions, dispatch),
+    }))(class Test extends React.Component {
+      constructor(props) {
+        super(props)
+        this.handleConfirm = this.handleConfirm.bind(this)
+      }
+      handleConfirm() {
+        this.props.ConfirmActions.confirm('안녕하세요. \n 정말 계속 하시겠어요?').then(result => console.log(result))
+      }
+      render() {
+        return (
+          <>
+            <Button onClick={this.handleConfirm}>confirm!</Button>
+          </>
+        )
+      }
+    })
+    return <TestWrap />
+  }}
+</Playground>
