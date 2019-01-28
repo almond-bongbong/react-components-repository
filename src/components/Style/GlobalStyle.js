@@ -17,6 +17,7 @@ export default createGlobalStyle`
   body {
     color: #888;
     font-size: 13px;
+    line-height: 1.5;
   }
   
   #nprogress {

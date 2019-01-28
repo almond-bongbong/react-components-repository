@@ -9,7 +9,7 @@ const BasicSelectStyle = styled.div`
   
   ${props => props.inline && css`
     display: inline-block;
-    width: 130px;
+    width: 140px;
   `}
   
   & > select {

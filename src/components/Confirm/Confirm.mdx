@@ -10,15 +10,23 @@ import Button from '../Button/Button'
 
 # Confirm
 
-1. 최상위 컴포넌트 내에 `<Confirm />` 컴포넌트를 추가 합니다.
-
+- 최상위 컴포넌트 내에 `<Confirm />` 컴포넌트를 추가 합니다.
 ```
 <div className="App">
   <Confirm />
 </div>
 ```
 
-2. `<Confirm />` 컴포넌트는 store의 `confirm` reducer를 바라봅니다.
+- `<Confirm />` 컴포넌트는 store의 `confirm` reducer를 바라봅니다.
+```
+const initialState = {
+  show: false,
+  message: null,
+  callback: null,
+};
+```
+
+- 결과 값은 `Promise` 객체를 통해 return 됩니다.
 
 <Playground>
   {() => {
