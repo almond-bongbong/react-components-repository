@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const BasicInputStyle = styled.div`
   display: block;
@@ -16,18 +16,26 @@ const BasicInputStyle = styled.div`
     font-size: 13px;
     line-height: ${props => props.size}px;
   }
+  
+  ${props => props.theme === 'line' && css`
+    & > input {
+      border: 0;
+      border-bottom: 1px solid #ddd;
+    }
+  `}
 `;
 
 const Input = ({
-  type, placeholder, value, size, onChange,
+  type, theme, placeholder, value, size, onChange,
 }) => (
-  <BasicInputStyle size={size}>
+  <BasicInputStyle size={size} theme={theme}>
     <input type={type} placeholder={placeholder} value={value} onChange={onChange} />
   </BasicInputStyle>
 );
 
 Input.propTypes = {
   type: PropTypes.oneOf(['text', 'password']),
+  theme: PropTypes.oneOf(['line']),
   placeholder: PropTypes.string,
   value: PropTypes.string,
   size: PropTypes.oneOf([30, 40, 50]),
@@ -36,6 +44,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   type: 'text',
+  theme: '',
   placeholder: '',
   value: '',
   size: 40,

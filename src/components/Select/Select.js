@@ -38,12 +38,19 @@ const BasicSelectStyle = styled.div`
     right: 10px;
     margin-top: -3px;
   }
+  
+  ${props => props.theme === 'line' && css`
+    & select {
+      border: 0;
+      border-bottom: 1px solid #ddd;
+    }
+  `}
 `;
 
 const Select = ({
-  children, onChange, value, inline, size,
+  children, theme, onChange, value, inline, size,
 }) => (
-  <BasicSelectStyle inline={inline} size={size}>
+  <BasicSelectStyle inline={inline} theme={theme} size={size}>
     <select onChange={onChange} value={value}>
       {children}
     </select>
@@ -52,6 +59,7 @@ const Select = ({
 
 Select.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  theme: PropTypes.oneOf(['line']),
   onChange: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   inline: PropTypes.bool,
@@ -60,6 +68,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
   inline: false,
+  theme: '',
   size: 40,
 };
 
