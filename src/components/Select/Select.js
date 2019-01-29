@@ -19,6 +19,7 @@ const BasicSelectStyle = styled.div`
     padding: 0 22px 0 15px;
     border: 1px solid #ddd;
     border-radius: 0;
+    outline: 0;
     background-color: #fff;
     font-size: 13px;
     -webkit-appearance: none;

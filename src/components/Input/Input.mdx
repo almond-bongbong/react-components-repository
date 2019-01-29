@@ -23,18 +23,18 @@ import Input from './Input'
   <Input type="password" onChange={e => console.log(e)} />
 </Playground>
 
+## Placeholder
+
+<Playground>
+  <Input type="text" placeholder="이름을 입력하세요." onChange={e => console.log(e)} />
+</Playground>
+
 ## Theme
 
 ### line
 
 <Playground>
-  <Input type="text" theme="line" onChange={e => console.log(e)} />
-</Playground>
-
-## Placeholder
-
-<Playground>
-  <Input type="text" placeholder="이름을 입력하세요." onChange={e => console.log(e)} />
+  <Input type="text" placeholder="이름을 입력하세요." theme="line" onChange={e => console.log(e)} />
 </Playground>
 
 ## Size
@@ -55,4 +55,18 @@ import Input from './Input'
 
 <Playground>
   <Input type="text" size={50} onChange={e => console.log(e)} />
+</Playground>
+
+## Validation
+
+### warning
+
+<Playground>
+  <Input type="text" status="warning" warningMessage="다시 한번 확인해 주세요." onChange={e => console.log(e)} />
+</Playground>
+
+### correct
+
+<Playground>
+  <Input type="text" status="correct" onChange={e => console.log(e)} />
 </Playground>

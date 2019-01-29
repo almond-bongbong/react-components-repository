@@ -12,7 +12,6 @@ const BasicButton = styled.div`
   `};
 
   button, a {
-    box-sizing: border-box;
     display: block;
     width: 100%;
     min-width: 80px;
@@ -32,7 +31,6 @@ const BasicButton = styled.div`
     }
     
     & span {
-      box-sizing: border-box;
       position: relative;
     }
     

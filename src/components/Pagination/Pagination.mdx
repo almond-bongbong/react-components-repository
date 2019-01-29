@@ -1,0 +1,16 @@
+---
+name: Pagination
+---
+
+import { Playground, PropsTable } from 'docz'
+import Pagination from './Pagination'
+
+# Pagination
+
+<PropsTable of={Pagination} />
+
+## Basic usage
+
+<Playground>
+  <Pagination type="text" current={2} total={63} onChange={page => console.log(page)} />
+</Playground>
