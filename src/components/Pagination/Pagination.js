@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faAngleDoubleLeft,
+  faAngleDoubleRight,
+  faAngleLeft,
+  faAngleRight,
+} from '@fortawesome/free-solid-svg-icons';
 import { blue } from '../Style/Mixin';
 
 const PaginationStyle = styled.div`
@@ -8,6 +15,15 @@ const PaginationStyle = styled.div`
   color: #888;
   font-size: 0;
   text-align: center;
+  
+  & .arrow {
+    color: #999;
+    font-size: 14px;
+  }
+  
+  & .numbers {
+    margin: 0 10px;
+  }
   
   & button {
     display: inline-block;
@@ -31,10 +47,6 @@ const PaginationStyle = styled.div`
 `;
 
 const NumberStyle = styled.button`
-  & + & {
-    margin-left: 5px;
-  }
-  
   ${props => props.active && css`
     color: ${blue};
     text-decoration: underline;
@@ -45,9 +57,17 @@ const Pagination = ({
   current, displayItem, displayPage, total, onChange,
 }) => {
   const numbers = [];
-  const pageCount = Math.floor(total / displayItem);
+  const pageCount = Math.ceil(total / displayItem);
+  const displayStartPage = Math.floor((current - 1) / displayPage) * displayPage + 1;
+  const displayEndPage = displayStartPage + displayPage - 1;
+  const prevPage = displayStartPage > 1 ? displayStartPage - 1 : 1;
+  const nextPage = displayEndPage < pageCount ? displayEndPage + 1 : pageCount;
 
-  for (let i = 1; i <= displayPage; i += 1) {
+  console.log('total item : ', total);
+  console.log('total page : ', pageCount);
+  console.log(`${displayStartPage} - ${displayEndPage}`);
+
+  for (let i = displayStartPage; i <= displayEndPage; i += 1) {
     if (i > pageCount) break;
     numbers.push(
       <NumberStyle
@@ -63,8 +83,11 @@ const Pagination = ({
   }
   return (
     <PaginationStyle>
-      <button type="button" onClick={() => onChange(1)}><span /></button>
-      {numbers}
+      <button type="button" className="arrow" onClick={() => onChange(1)}><span><FontAwesomeIcon icon={faAngleDoubleLeft} /></span></button>
+      <button type="button" className="arrow" onClick={() => onChange(prevPage)}><span><FontAwesomeIcon icon={faAngleLeft} /></span></button>
+      <span className="numbers">{numbers}</span>
+      <button type="button" className="arrow" onClick={() => onChange(nextPage)}><span><FontAwesomeIcon icon={faAngleRight} /></span></button>
+      <button type="button" className="arrow" onClick={() => onChange(pageCount)}><span><FontAwesomeIcon icon={faAngleDoubleRight} /></span></button>
     </PaginationStyle>
   );
 };
