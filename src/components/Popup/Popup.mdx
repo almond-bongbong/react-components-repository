@@ -1,0 +1,47 @@
+---
+name: Popup
+menu: Popup
+---
+
+import { Playground, PropsTable } from 'docz'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as modalActions from '../../modules/modal'
+import ModalTypes from '../../constants/popupTypes';
+import Button from '../Button/Button'
+
+# Popup
+
+- 최상위 컴포넌트 내에 `<Popup />` 컴포넌트를 추가 합니다.
+```
+<div className="App">
+  <Popup />
+</div>
+
+```
+
+- `<Popup />` 컴포넌트는 store의 `modal` reducer를 바라봅니다.
+```
+const initialState = {
+  show: false,
+  content: null,
+};
+```
+
+<Playground>
+  {() => {
+    const TestWrap = connect(null, dispatch => ({
+      PopupActions: bindActionCreators(modalActions, dispatch),
+    }))(class Test extends React.Component {
+      render() {
+        const testPopup = <div><b>테스트!</b></div>;
+        return (
+          <>
+            <Button onClick={() => this.props.PopupActions.openPopup(ModalTypes.SAMPLE)}>modal!</Button>
+          </>
+        )
+      }
+    })
+    return <TestWrap />
+  }}
+</Playground>

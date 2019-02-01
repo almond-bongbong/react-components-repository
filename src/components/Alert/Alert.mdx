@@ -1,5 +1,6 @@
 ---
 name: Alert
+menu: Modal
 ---
 
 import { Playground, PropsTable } from 'docz'
@@ -34,7 +35,7 @@ const initialState = {
       render() {
         return (
           <>
-            <Button onClick={e => this.props.AlertActions.alert('안녕하세요. \n 홍길동님 환영합니다.')}>alert!</Button>
+            <Button onClick={e => this.props.AlertActions.alertMessage('안녕하세요. \n 홍길동님 환영합니다.')}>alert!</Button>
           </>
         )
       }

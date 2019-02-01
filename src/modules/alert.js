@@ -6,8 +6,7 @@ const ALERT_CLOSE = 'alert/ALERT_CLOSE';
 
 export const alertOpen = createAction(ALERT_OPEN);
 export const alertClose = createAction(ALERT_CLOSE);
-
-export const alert = message => (dispatch) => {
+export const alertMessage = message => (dispatch) => {
   dispatch(alertOpen(message));
 };
 

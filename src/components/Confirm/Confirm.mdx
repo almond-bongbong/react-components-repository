@@ -1,5 +1,6 @@
 ---
 name: Confirm
+menu: Modal
 ---
 
 import { Playground, PropsTable } from 'docz'
@@ -37,9 +38,11 @@ const initialState = {
         super(props)
         this.handleConfirm = this.handleConfirm.bind(this)
       }
+
       handleConfirm() {
-        this.props.ConfirmActions.confirm('안녕하세요. \n 정말 계속 하시겠어요?').then(result => console.log(result))
+        this.props.ConfirmActions.confirmMessage('안녕하세요. \n 정말 계속 하시겠어요?').then(result => console.log(result));
       }
+
       render() {
         return (
           <>

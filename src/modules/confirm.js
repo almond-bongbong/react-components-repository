@@ -6,8 +6,7 @@ const CONFIRM_CLOSE = 'confirm/CONFIRM_CLOSE';
 
 export const confirmOpen = createAction(CONFIRM_OPEN);
 export const confirmClose = createAction(CONFIRM_CLOSE);
-
-export const confirm = message => dispatch => new Promise((resolve) => {
+export const confirmMessage = message => dispatch => new Promise((resolve) => {
   dispatch(confirmOpen({
     message,
     callback: (result) => {
