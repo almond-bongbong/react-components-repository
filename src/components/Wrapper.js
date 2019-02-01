@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import GlobalStyle from './Style/GlobalStyle';
-import Popup from './Popup/Popup';
+import PopupContainer from './Popup/PopupContainer';
 import store from '../store';
 
 const Wrapper = ({ children }) => (
@@ -10,7 +10,7 @@ const Wrapper = ({ children }) => (
     <GlobalStyle />
     {children}
 
-    <Popup />
+    <PopupContainer />
   </Provider>
 );
 

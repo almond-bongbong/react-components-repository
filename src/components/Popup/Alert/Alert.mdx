@@ -1,0 +1,49 @@
+---
+name: Alert
+menu: Popup
+---
+
+import { Playground, PropsTable } from 'docz'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as popupActions from '../../../modules/popup'
+import Button from '../../Button/Button'
+
+# Alert
+
+- 최상위 컴포넌트 내에 `<PopupContainer />` 컴포넌트가 존재해야 합니다.
+```
+<div className="App">
+  <PopupContainer />
+</div>
+
+```
+
+## Basic usage
+
+- 아래와 같은 형식으로 alert 팝업을 호출 할 수 있습니다.
+```
+this.props.PopupActions.alert('안녕하세요. \\n 홍길동님 환영합니다.')
+```
+
+- alert action은 `Promise` 객체를 반환 하므로 팝업이 종료되는 시점을 확인할 수 있습니다.
+```
+this.props.PopupActions.alert('안녕하세요.).then(() => console.log('close')
+```
+
+<Playground>
+  {() => {
+    const TestWrap = connect(null, dispatch => ({
+      PopupActions: bindActionCreators(popupActions, dispatch),
+    }))(class Test extends React.Component {
+      render() {
+        return (
+          <>
+            <Button onClick={e => this.props.PopupActions.alert('안녕하세요.').then(() => console.log('close'))}>alert!</Button>
+          </>
+        )
+      }
+    })
+    return <TestWrap />
+  }}
+</Playground>

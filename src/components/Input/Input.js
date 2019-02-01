@@ -70,11 +70,11 @@ Input.propTypes = {
 
 Input.defaultProps = {
   type: 'text',
-  theme: null,
+  theme: undefined,
   placeholder: '',
   value: '',
   size: 40,
-  status: null,
+  status: undefined,
   warningMessage: '',
 };
 
