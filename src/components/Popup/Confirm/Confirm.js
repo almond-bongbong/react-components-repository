@@ -1,8 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../../Button/Button';
 import ButtonGroup from '../../ButtonGroup/ButtonGroup';
+import newlineText from '../../../lib/newlineText';
 
 const ConfirmStyle = styled.div`
   width: 250px;
@@ -17,12 +18,7 @@ const ConfirmStyle = styled.div`
 const Confirm = ({ data }) => (
   <ConfirmStyle>
     <div className="message">
-      {data.message.split('\n').map(line => (
-        <Fragment key={line}>
-          {line}
-          <br />
-        </Fragment>
-      ))}
+      {newlineText(data.message)}
     </div>
 
     <ButtonGroup>

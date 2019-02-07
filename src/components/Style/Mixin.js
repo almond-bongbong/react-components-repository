@@ -29,3 +29,41 @@ export const alignXY = css`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
+export const triangle = (width, direction, color) => {
+  let style = '';
+  if (direction === 'up') {
+    style = css`
+      width: 0;
+      height: 0;
+      border-left: ${width / 2}px solid transparent;
+      border-right: ${width / 2}px solid transparent;
+      border-bottom: ${width / 2}px solid ${color};
+    `;
+  } if (direction === 'down') {
+    style = css`
+      width: 0;
+      height: 0;
+      border-left: ${width / 2}px solid transparent;
+      border-right: ${width / 2}px solid transparent;
+      border-top: ${width / 2}px solid ${color};
+    `;
+  } if (direction === 'right') {
+    style = css`
+      width: 0;
+      height: 0;
+      border-top: ${width}px solid transparent;
+      border-bottom: ${width}px solid transparent;
+      border-left: ${width}px solid ${color};
+    `;
+  } if (direction === 'left') {
+    style = css`
+      width: 0;
+      height: 0;
+      border-top: ${width}px solid transparent;
+      border-bottom: ${width}px solid transparent;
+      border-right: ${width}px solid ${color};
+    `;
+  }
+  return style;
+};

@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../../Button/Button';
+import newlineText from '../../../lib/newlineText';
 
 const AlertStyle = styled.div`
   width: 250px;
@@ -16,12 +17,7 @@ const AlertStyle = styled.div`
 const Alert = ({ data }) => (
   <AlertStyle>
     <div className="message">
-      {data.message.split('\n').map(line => (
-        <Fragment key={line}>
-          {line}
-          <br />
-        </Fragment>
-      ))}
+      {newlineText(data.message)}
     </div>
     <Button inline={false} onClick={data.callback}>확인</Button>
   </AlertStyle>
