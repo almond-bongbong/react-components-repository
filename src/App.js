@@ -2,32 +2,26 @@ import React from 'react';
 import './App.css';
 
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as alertActions from './modules/alert';
-import Alert from './components/Alert/Alert';
+import * as popupActions from './modules/popup';
+import { popupTypes } from './constants/popupData';
 
-const App = ({ AlertActions }) => (
+const App = ({ PopupActions }) => (
   <div className="App">
     <header className="App-header">
-      <button type="button" onClick={() => AlertActions.alertOpen('안녕하세요. \n 환영합니다.')}>alert!</button>
+      <button type="button" onClick={() => PopupActions.openPopup(popupTypes.SAMPLE)}>popup!</button>
     </header>
-    <Alert />
   </div>
 );
 
 App.propTypes = {
-  AlertActions: PropTypes.shape({}).isRequired,
-  alert: PropTypes.shape({
-    show: PropTypes.bool,
-    message: PropTypes.string,
-  }).isRequired,
+  PopupActions: PropTypes.shape({}).isRequired,
 };
 
 export default connect(
-  state => ({
-    alert: state.alert,
-  }),
+  null,
   dispatch => ({
-    alertOpen: payload => dispatch(alertActions.alertOpen(payload)),
+    PopupActions: bindActionCreators(popupActions, dispatch),
   }),
 )(App);

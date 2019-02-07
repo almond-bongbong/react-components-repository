@@ -40,6 +40,7 @@ http://react-compo-repo.surge.sh/
 - redux-actions
 - redux-thunk
 - immer
+- @babel/polyfill
 - @fortawesome/fontawesome-svg-core
 - @fortawesome/free-solid-svg-icons
 - @fortawesome/react-fontawesome

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Button from '../../Button/Button';
 
 const AlertStyle = styled.div`
+  width: 250px;
   & .message {
     margin-bottom: 20px;
     color: #666;

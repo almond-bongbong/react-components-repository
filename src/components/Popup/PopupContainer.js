@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createGlobalStyle, css } from 'styled-components';
 import Popup from './Popup';
 import * as popupActions from '../../modules/popup';
+
+const BodyStyleForPopup = createGlobalStyle`
+  html {
+    & body {
+      ${props => props.isActivePopup && css`
+        overflow: hidden;
+        padding-right: ${props.scrollWith}px;
+      `}
+    }
+  }
+`;
+
 
 class PopupContainer extends Component {
   componentDidUpdate() {
@@ -22,9 +35,12 @@ class PopupContainer extends Component {
 
   render() {
     const { popup, closePopup } = this.props;
+    const scrollWith = window.innerWidth - document.documentElement.clientWidth;
+    const isActivePopup = popup.openedPopups.length > 0;
 
     return (
       <>
+        <BodyStyleForPopup isActivePopup={isActivePopup} scrollWith={scrollWith} />
         {popup.openedPopups.map(item => (
           <Popup
             key={item.type}

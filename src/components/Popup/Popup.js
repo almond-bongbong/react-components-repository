@@ -10,7 +10,8 @@ const fadeIn = keyframes`
 
 const PopupStyle = styled.div`
   & .mask {
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     position: fixed;
     top: 0;
     right: 0;
@@ -18,11 +19,11 @@ const PopupStyle = styled.div`
     left: 0;
     z-index: 99999;
     background-color: rgba(0,0,0,0.4);
+    text-align: center;
     animation: ${fadeIn} .3s ease-in-out;
   }
   & .content {
-    display: block;
-    width: 300px;
+    display: inline-block;
     padding: 20px;
     border-radius: 6px;
     background-color:#fff;
@@ -59,7 +60,8 @@ class Popup extends Component {
 
   handleClose = (e) => {
     const { popup, closePopup } = this.props;
-    if (e.target.classList.value === 'mask') {
+
+    if (e.target.classList.contains('mask')) {
       closePopup(popup.id);
     }
   };
@@ -69,9 +71,7 @@ class Popup extends Component {
     const { scrolling } = this.state;
 
     return (
-      <PopupStyle
-        scrolling={scrolling ? 1 : 0}
-      >
+      <PopupStyle scrolling={scrolling ? 1 : 0}>
         <div
           className="mask"
           role="button"
@@ -94,7 +94,10 @@ Popup.propTypes = {
   popup: PropTypes.shape({
     id: PropTypes.string,
     type: PropTypes.string,
-    data: PropTypes.shape({}),
+    data: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape({}),
+    ]),
   }).isRequired,
 };
 

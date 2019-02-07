@@ -63,10 +63,6 @@ const Pagination = ({
   const prevPage = displayStartPage > 1 ? displayStartPage - 1 : 1;
   const nextPage = displayEndPage < pageCount ? displayEndPage + 1 : pageCount;
 
-  console.log('total item : ', total);
-  console.log('total page : ', pageCount);
-  console.log(`${displayStartPage} - ${displayEndPage}`);
-
   for (let i = displayStartPage; i <= displayEndPage; i += 1) {
     if (i > pageCount) break;
     numbers.push(

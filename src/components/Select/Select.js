@@ -69,7 +69,7 @@ Select.propTypes = {
 
 Select.defaultProps = {
   inline: false,
-  theme: '',
+  theme: undefined,
   size: 40,
 };
 

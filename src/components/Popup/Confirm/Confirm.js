@@ -5,6 +5,7 @@ import Button from '../../Button/Button';
 import ButtonGroup from '../../ButtonGroup/ButtonGroup';
 
 const ConfirmStyle = styled.div`
+  width: 250px;
   & .message {
     margin-bottom: 20px;
     color: #666;
@@ -13,7 +14,7 @@ const ConfirmStyle = styled.div`
   }
 `;
 
-const Confirm = ({ id, data }) => (
+const Confirm = ({ data }) => (
   <ConfirmStyle>
     <div className="message">
       {data.message.split('\n').map(line => (
@@ -31,9 +32,12 @@ const Confirm = ({ id, data }) => (
   </ConfirmStyle>
 );
 
-Confirm.propType = {
-  id: PropTypes.string,
-  message: PropTypes.string,
+Confirm.propTypes = {
+  data: PropTypes.shape({}),
+};
+
+Confirm.defaultProps = {
+  data: undefined,
 };
 
 export default Confirm;
