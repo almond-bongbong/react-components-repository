@@ -18,7 +18,7 @@ const BasicButton = styled.div`
     height: ${props => props.size}px;
     padding: 0 20px;
     border: 1px solid #ddd;
-    border-radius: 3px;
+    border-radius: 2px;
     font-size: 13px;
     cursor: pointer;
     text-align: center;
@@ -64,7 +64,10 @@ const Button = ({
 
 Button.propTypes = {
   inline: PropTypes.bool,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+  ]).isRequired,
   theme: PropTypes.oneOf(['red', 'white', 'blue']),
   size: PropTypes.oneOf([30, 40, 50]),
   onClick: PropTypes.func,

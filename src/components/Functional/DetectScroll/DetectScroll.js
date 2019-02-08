@@ -1,41 +1,22 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
 import throttle from 'lodash/throttle';
 import PropTypes from 'prop-types';
 
 const isBrowser = process.env.APP_ENV ? process.env.APP_ENV === 'browser' : true;
 
-class DetectScroll extends Component {
-  constructor(props) {
-    super(props);
+const DetectScroll = ({ onScrollEnd, endOffset }) => {
+  let isEndScroll = false;
 
-    this.isEndScroll = false;
-    this.trottledScrollEvent = throttle(this.handleScrollFrame, 500);
-  }
-
-  componentDidMount() {
-    if (isBrowser) {
-      window.addEventListener('scroll', this.trottledScrollEvent, false);
-    }
-  }
-
-  componentWillUnmount() {
-    if (isBrowser) {
-      window.removeEventListener('scroll', this.trottledScrollEvent, false);
-    }
-  }
-
-  detectScrollEnd = (top) => {
-    const { onScrollEnd, endOffset } = this.props;
-
-    if (top > endOffset && !this.isEndScroll) {
-      this.isEndScroll = true;
-      onScrollEnd(this.isEndScroll);
-    } else if (top <= endOffset && this.isEndScroll) {
-      this.isEndScroll = false;
+  const detectScrollEnd = (top) => {
+    if (top > endOffset && !isEndScroll) {
+      isEndScroll = true;
+      onScrollEnd(isEndScroll);
+    } else if (top <= endOffset && isEndScroll) {
+      isEndScroll = false;
     }
   };
 
-  handleScrollFrame = () => {
+  const handleScrollFrame = () => {
     if (isBrowser) {
       const supportPageOffset = window.pageXOffset !== undefined;
       const isCSS1Compat = ((document.compatMode || '') === 'CSS1Compat');
@@ -45,14 +26,21 @@ class DetectScroll extends Component {
       const { scrollHeight } = document.body;
       const top = (scrollTop + frameHeight) / scrollHeight;
 
-      this.detectScrollEnd(top);
+      detectScrollEnd(top);
     }
   };
 
-  render() {
-    return null;
-  }
-}
+  const throttledScrollEvent = throttle(handleScrollFrame, 500);
+
+  useEffect(() => {
+    window.addEventListener('scroll', throttledScrollEvent, false);
+
+    return () => {
+      window.removeEventListener('scroll', throttledScrollEvent, false);
+    };
+  });
+  return null;
+};
 
 DetectScroll.propTypes = {
   onScrollEnd: PropTypes.func,

@@ -13,9 +13,8 @@ const spin = keyframes`
   }
 `;
 
-const SimplePreloader = styled.div`
+const RotateLoaderStyle = styled.div`
   position: relative;
-  
   .loader {
     display: block;
     position: relative;
@@ -54,10 +53,10 @@ const SimplePreloader = styled.div`
   }
 `;
 
-const PreLoader = () => (
-  <SimplePreloader>
+const RotateLoader = () => (
+  <RotateLoaderStyle>
     <div className="loader" />
-  </SimplePreloader>
+  </RotateLoaderStyle>
 );
 
-export default PreLoader;
+export default RotateLoader;

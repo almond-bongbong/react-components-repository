@@ -4,14 +4,49 @@ menu: Loader
 ---
 
 import { Playground, PropsTable } from 'docz'
-import PreLoader from './PreLoader'
+import SimpleLoader from './SimpleLoader'
+import RotateLoader from './RotateLoader'
+import ButtonGroup from '../ButtonGroup/ButtonGroup'
+import Button from '../Button/Button'
 
 # PreLoader
 
-<PropsTable of={PreLoader} />
+## Simple Loader
 
-## Basic Usage
+<PropsTable of={SimpleLoader} />
+
+### theme
 
 <Playground>
-  <PreLoader />
+  <SimpleLoader />
+</Playground>
+
+<Playground>
+  <SimpleLoader theme="blue" />
+</Playground>
+
+<Playground style={{ backgroundColor: "#666" }}>
+  <SimpleLoader theme="white" />
+</Playground>
+
+### with Button
+
+<Playground>
+  <ButtonGroup>
+      <Button theme="red" size={30}>
+        <SimpleLoader theme="white" size={15}/>
+      </Button>
+      <Button theme="blue">
+        <SimpleLoader theme="white" size={20}/>
+      </Button>
+      <Button size={50}>
+        <SimpleLoader theme="red" size={25}/>
+      </Button>
+  </ButtonGroup>
+</Playground>
+
+## Rotate Loader
+
+<Playground>
+  <RotateLoader />
 </Playground>
