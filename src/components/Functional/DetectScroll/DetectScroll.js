@@ -38,7 +38,7 @@ const DetectScroll = ({ onScrollEnd, endOffset }) => {
     return () => {
       window.removeEventListener('scroll', throttledScrollEvent, false);
     };
-  });
+  }, []);
   return null;
 };
 
