@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createGlobalStyle, css } from 'styled-components';
@@ -16,42 +16,38 @@ const BodyStyleForPopup = createGlobalStyle`
   }
 `;
 
-
-class PopupContainer extends Component {
-  componentDidUpdate() {
-    const { popup } = this.props;
-
-    if (popup.openedPopups.length > 0) {
-      document.addEventListener('keydown', this.escFunction, false);
-    } else {
-      document.removeEventListener('keydown', this.escFunction, false);
-    }
-  }
-
-  escFunction = (event) => {
-    const { closePopup } = this.props;
+const PopupContainer = ({ popup, closePopup }) => {
+  const scrollWidth = useRef();
+  const escFunction = (event) => {
     if (event.keyCode === 27) closePopup();
   };
 
-  render() {
-    const { popup, closePopup } = this.props;
-    const scrollWith = window.innerWidth - document.documentElement.clientWidth;
-    const isActivePopup = popup.openedPopups.length > 0;
+  useEffect(() => {
+    scrollWidth.current = scrollWidth.current
+      ? scrollWidth.current : window.innerWidth - document.documentElement.clientWidth;
+    if (popup.openedPopups.length > 0) {
+      document.addEventListener('keydown', escFunction, false);
+    } else {
+      document.removeEventListener('keydown', escFunction, false);
+    }
+    return () => document.removeEventListener('keydown', escFunction, false);
+  });
 
-    return (
-      <>
-        <BodyStyleForPopup isActivePopup={isActivePopup} scrollWith={scrollWith} />
-        {popup.openedPopups.map(item => (
-          <Popup
-            key={item.type}
-            popup={item}
-            closePopup={closePopup}
-          />
-        ))}
-      </>
-    );
-  }
-}
+  const isActivePopup = popup.openedPopups.length > 0;
+
+  return (
+    <>
+      <BodyStyleForPopup isActivePopup={isActivePopup} scrollWith={scrollWidth.current} />
+      {popup.openedPopups.map(item => (
+        <Popup
+          key={item.type}
+          popup={item}
+          closePopup={closePopup}
+        />
+      ))}
+    </>
+  );
+};
 
 PopupContainer.propTypes = {
   closePopup: PropTypes.func.isRequired,
