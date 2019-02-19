@@ -10,7 +10,7 @@ const fadeIn = keyframes`
 
 const PopupStyle = styled.div`
   & .mask {
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     position: fixed;
     top: 0;
@@ -20,7 +20,7 @@ const PopupStyle = styled.div`
     z-index: 99999;
     background-color: rgba(0,0,0,0.4);
     text-align: center;
-    animation: ${fadeIn} .3s ease-in-out;
+    animation: ${fadeIn} .2s ease-in-out;
   }
   & .content {
     display: inline-block;
@@ -67,17 +67,15 @@ class Popup extends Component {
   };
 
   render() {
-    const { popup, closePopup } = this.props;
+    const { popup } = this.props;
     const { scrolling } = this.state;
 
     return (
       <PopupStyle scrolling={scrolling ? 1 : 0}>
         <div
           className="mask"
-          role="button"
-          tabIndex="0"
+          role="presentation"
           onClick={this.handleClose}
-          onKeyPress={e => e.key === 'Enter' && closePopup(popup.id)}
           title="닫기"
         >
           <div className="content" ref={(ref) => { this.cont = ref; }}>

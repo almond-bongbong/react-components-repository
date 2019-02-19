@@ -14,12 +14,12 @@ const AlertStyle = styled.div`
   }
 `;
 
-const Alert = ({ data }) => (
+const Alert = ({ data: { id, message } }) => (
   <AlertStyle>
     <div className="message">
-      {newlineText(data.message)}
+      {newlineText(message)}
     </div>
-    <Button inline={false} onClick={data.callback}>확인</Button>
+    <Button inline={false} onClick={window.popupCallback[id]}>확인</Button>
   </AlertStyle>
 );
 

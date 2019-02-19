@@ -15,15 +15,15 @@ const ConfirmStyle = styled.div`
   }
 `;
 
-const Confirm = ({ data }) => (
+const Confirm = ({ data: { id, message } }) => (
   <ConfirmStyle>
     <div className="message">
-      {newlineText(data.message)}
+      {newlineText(message)}
     </div>
 
     <ButtonGroup>
-      <Button inline={false} onClick={() => data.callback(false)}>취소</Button>
-      <Button inline={false} onClick={() => data.callback(true)} theme="red">확인</Button>
+      <Button inline={false} onClick={() => window.popupCallback[id](false)}>취소</Button>
+      <Button inline={false} onClick={() => window.popupCallback[id](true)} theme="red">확인</Button>
     </ButtonGroup>
   </ConfirmStyle>
 );
