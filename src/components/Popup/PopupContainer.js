@@ -17,14 +17,13 @@ const BodyStyleForPopup = createGlobalStyle`
 `;
 
 const PopupContainer = ({ popup, closePopup }) => {
-  const scrollWidth = useRef();
   const escFunction = (event) => {
     if (event.keyCode === 27) closePopup();
   };
 
+  const refWindowWidth = useRef(0);
+
   useEffect(() => {
-    scrollWidth.current = scrollWidth.current
-      ? scrollWidth.current : window.innerWidth - document.documentElement.clientWidth;
     if (popup.openedPopups.length > 0) {
       document.addEventListener('keydown', escFunction, false);
     } else {
@@ -34,10 +33,22 @@ const PopupContainer = ({ popup, closePopup }) => {
   });
 
   const isActivePopup = popup.openedPopups.length > 0;
+  const getScrollWidth = () => {
+    const { openedPopups } = popup;
+    let windowWidth = 0;
+
+    if (openedPopups.length > 1 || (openedPopups.length > 0 && refWindowWidth.current)) {
+      windowWidth = refWindowWidth.current;
+    } else {
+      windowWidth = window.innerWidth - document.documentElement.clientWidth;
+    }
+    refWindowWidth.current = windowWidth;
+    return windowWidth;
+  };
 
   return (
     <>
-      <BodyStyleForPopup isActivePopup={isActivePopup} scrollWith={scrollWidth.current} />
+      <BodyStyleForPopup isActivePopup={isActivePopup} scrollWith={getScrollWidth()} />
       {popup.openedPopups.map(item => (
         <Popup
           key={item.type}
