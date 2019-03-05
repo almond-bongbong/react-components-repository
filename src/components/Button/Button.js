@@ -27,7 +27,7 @@ const BasicButton = styled.div`
     transition: box-shadow .2s;
   
     &:hover {
-      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
     
     & span {

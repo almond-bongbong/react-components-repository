@@ -1,0 +1,42 @@
+---
+name: Tab
+---
+
+import { Playground, PropsTable } from 'docz'
+import Tab from './Tab'
+
+# Tab
+
+<PropsTable of={Tab} />
+
+## Basic usage
+
+<Playground>
+  {() => {
+    class Test extends React.Component {
+      constructor (props) {
+        super(props)
+
+        this.state = { value: 'jp' }
+      }
+
+      render() {
+        return (
+          <Tab
+            items={[
+              { value: "ko", title: "한국" },
+              { value: "jp", title: "일본" },
+              { value: "hk", title: "홍콩" },
+              { value: "mo", title: "마카오" },
+            ]}
+            value={this.state.value}
+            onClick={value => this.setState({ value })}
+          />
+        )
+      }
+    }
+    return (
+      <Test />
+    )
+  }}
+</Playground>

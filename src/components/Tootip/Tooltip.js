@@ -9,6 +9,7 @@ import { triangle } from '../Style/Mixin';
 const TooltipStyle = styled.div`
   display: inline-block;
   position: relative;
+  margin: 0 0 0 ${({ marginLeft }) => marginLeft}px;
   vertical-align: middle;
   font-size: 0;
   &:hover {
@@ -49,8 +50,8 @@ const TooltipStyle = styled.div`
   }
 `;
 
-const Tooltip = ({ children }) => (
-  <TooltipStyle>
+const Tooltip = ({ children, marginLeft }) => (
+  <TooltipStyle marginLeft={marginLeft}>
     <i><FontAwesomeIcon icon={faInfoCircle} /></i>
     <div className="message">
       {newlineText(children)}
@@ -60,6 +61,11 @@ const Tooltip = ({ children }) => (
 
 Tooltip.propTypes = {
   children: PropTypes.string.isRequired,
+  marginLeft: PropTypes.number,
+};
+
+Tooltip.defaultProps = {
+  marginLeft: 0,
 };
 
 export default Tooltip;
