@@ -16,6 +16,7 @@ export const closePopup = id => (dispatch) => {
   delete window.popupCallback[id];
   dispatch(popPopup(id));
 };
+
 export const openPopup = payload => dispatch => new Promise((resolve) => {
   const id = popupTypes[payload.type || payload];
   window.popupCallback = {
@@ -26,6 +27,7 @@ export const openPopup = payload => dispatch => new Promise((resolve) => {
   };
   dispatch(pushPopup(payload));
 });
+
 export const alert = message => dispatch => new Promise((resolve) => {
   const id = popupTypes.ALERT;
   window.popupCallback = {
@@ -36,6 +38,7 @@ export const alert = message => dispatch => new Promise((resolve) => {
   };
   dispatch(openAlert({ id, message }));
 });
+
 export const confirm = message => dispatch => new Promise((resolve) => {
   const id = popupTypes.CONFIRM;
   window.popupCallback = {
@@ -60,10 +63,12 @@ export default handleActions({
       data: action.payload.data,
     });
   }),
+
   [POP_POPUP]: (state, action) => produce(state, (draft) => {
     const id = action.payload;
     draft.openedPopups.splice(draft.openedPopups.findIndex(item => item.id === id, 1));
   }),
+
   [OPEN_ALERT]: (state, action) => produce(state, (draft) => {
     draft.openedPopups.push({
       id: action.payload.id,
@@ -71,6 +76,7 @@ export default handleActions({
       data: action.payload,
     });
   }),
+
   [OPEN_CONFIRM]: (state, action) => produce(state, (draft) => {
     draft.openedPopups.push({
       id: action.payload.id,

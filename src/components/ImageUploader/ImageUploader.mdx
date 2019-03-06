@@ -1,0 +1,28 @@
+---
+name: ImageUploader
+---
+
+import { Playground, PropsTable } from 'docz'
+import ImageUploader from './ImageUploader'
+
+# ImageUploader
+
+<PropsTable of={ImageUploader} />
+
+## Basic usage
+
+<Playground>
+  {() => {
+    class Test extends React.Component {
+
+      render() {
+        return (
+          <ImageUploader />
+        )
+      }
+    }
+    return (
+      <Test />
+    )
+  }}
+</Playground>
