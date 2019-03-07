@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import throttle from 'lodash/throttle';
 import PropTypes from 'prop-types';
 
@@ -39,7 +39,7 @@ const DetectScroll = ({ onScrollEnd, endOffset }) => {
       window.removeEventListener('scroll', throttledScrollEvent, false);
     };
   }, []);
-  return null;
+  return <></>;
 };
 
 DetectScroll.propTypes = {

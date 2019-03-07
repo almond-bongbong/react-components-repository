@@ -1,0 +1,29 @@
+---
+name: ImageRegister
+menu: ImageUploader
+---
+
+import { Playground, PropsTable } from 'docz'
+import ImageRegister from './ImageRegister'
+
+# ImageUploader
+
+<PropsTable of={ImageRegister} />
+
+## Basic usage
+
+<Playground>
+  {() => {
+    class Test extends React.Component {
+
+      render() {
+        return (
+          <ImageRegister />
+        )
+      }
+    }
+    return (
+      <Test />
+    )
+  }}
+</Playground>

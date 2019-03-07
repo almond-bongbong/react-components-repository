@@ -29,7 +29,7 @@
     "eject": "react-scripts eject",
     "docz:start": "docz dev",
     "docz:build": "docz build",
-    "docz:deploy": "yarn docz:build && surge ./.docz/dist/ --domain react-compo-repo.surge.sh"
+    "docz:deploy": "yarn docz:build && cp ./.docz/dist/index.html ./.docz/dist/200.html && surge ./.docz/dist/ --domain react-compo-repo.surge.sh"
   },
   "eslintConfig": {
     "extends": "airbnb",
