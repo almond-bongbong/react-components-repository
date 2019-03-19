@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes, css } from 'styled-components';
 import { getPopupComponent } from '../../constants/popupData';
@@ -42,50 +42,43 @@ const PopupStyle = styled.div`
   }
 `;
 
-class Popup extends Component {
-  state = {
-    scrolling: false,
-  };
+const Popup = ({ popup, closePopup }) => {
+  const contentEl = useRef(null);
+  const [hasScroll, setHasScroll] = useState(false);
 
-  componentDidMount() {
-    if (this.cont) {
+  useEffect(() => {
+    if (contentEl) {
       const windowHeight = window.innerHeight;
-      const height = this.cont.clientHeight;
+      const height = contentEl.current.clientHeight;
       const margin = 50;
+
       if (windowHeight - margin < height) {
-        this.setState({ scrolling: true });
+        setHasScroll(true);
       }
     }
-  }
+  }, [contentEl]);
 
-  handleClose = (e) => {
-    const { popup, closePopup } = this.props;
-
+  const handleClose = (e) => {
     if (e.target.classList.contains('mask')) {
       closePopup(popup.id);
     }
   };
 
-  render() {
-    const { popup } = this.props;
-    const { scrolling } = this.state;
-
-    return (
-      <PopupStyle scrolling={scrolling ? 1 : 0}>
-        <div
-          className="mask"
-          role="presentation"
-          onClick={this.handleClose}
-          title="닫기"
-        >
-          <div className="content" ref={(ref) => { this.cont = ref; }}>
-            {getPopupComponent(popup)}
-          </div>
+  return (
+    <PopupStyle scrolling={hasScroll ? 1 : 0}>
+      <div
+        className="mask"
+        role="presentation"
+        onClick={handleClose}
+        title="닫기"
+      >
+        <div className="content" ref={contentEl}>
+          {getPopupComponent(popup)}
         </div>
-      </PopupStyle>
-    );
-  }
-}
+      </div>
+    </PopupStyle>
+  );
+};
 
 Popup.propTypes = {
   closePopup: PropTypes.func.isRequired,
