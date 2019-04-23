@@ -30,7 +30,7 @@ const PopupContainer = ({ popup, closePopup }) => {
       document.removeEventListener('keydown', escFunction, false);
     }
     return () => document.removeEventListener('keydown', escFunction, false);
-  });
+  }, [popup.openedPopups]);
 
   const isActivePopup = popup.openedPopups.length > 0;
   const getScrollWidth = () => {
